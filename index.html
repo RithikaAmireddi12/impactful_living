@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impactful Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f2d9;
+  --paper2:#fffdf2;
+  --ink:#241914;
+  --muted:#6f6258;
+  --green:#c6ed9b;
+  --green2:#e7f8c9;
+  --orange:#ed7415;
+  --orange2:#f4a05b;
+  --yellow:#f4d45d;
+  --aqua:#a8dedc;
+  --rust:#6d3428;
+  --line:rgba(36,25,20,.20);
+  --shadow:0 18px 45px rgba(50,32,22,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"DM Sans",system-ui,sans-serif;
+  overflow-x:hidden;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+img{max-width:100%}
+::selection{background:#f4d45d;color:#241914}
+
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1000;
+  opacity:.055;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit}
+
+.shell{width:min(1380px,100%);margin:auto;padding:0 38px}
+.top{
+  position:fixed;left:0;right:0;top:0;z-index:900;
+  padding:18px 24px;display:flex;justify-content:space-between;align-items:center;
+  pointer-events:none;
+}
+.logo{
+  pointer-events:auto;display:inline-flex;align-items:center;gap:7px;
+  text-decoration:none;font-family:Fraunces,serif;font-size:23px;font-weight:600;
+  transform:rotate(-1deg);
+}
+.logo i{width:8px;height:8px;background:var(--orange);border-radius:50%;display:block}
+.addTop{
+  pointer-events:auto;border:2px solid var(--ink);background:var(--yellow);
+  padding:11px 18px 10px;border-radius:999px;font-weight:700;
+  box-shadow:4px 5px 0 var(--ink);transform:rotate(1.5deg);
+  transition:.18s ease;
+}
+.addTop:hover{transform:rotate(-1deg) translateY(-2px);box-shadow:6px 7px 0 var(--ink)}
+
+.hero{
+  min-height:100svh;position:relative;display:flex;align-items:center;
+  padding:90px 0 50px;overflow:hidden;
+}
+.hero .shell{position:relative;z-index:2}
+.heroArt{
+  position:absolute;right:-7vw;top:8vh;width:min(70vw,900px);
+  transform:rotate(1.3deg);
+  filter:saturate(.96);
+}
+.heroArt img{
+  display:block;width:100%;
+  clip-path:polygon(2% 0,98% 2%,100% 96%,96% 100%,1% 98%,0 4%);
+}
+.heroCopy{
+  width:min(600px,58vw);position:relative;z-index:3;
+}
+.kicker{
+  display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;background:var(--paper2);padding:7px 11px;
+  border:1.5px solid var(--ink);transform:rotate(-2deg);
+}
+.hero h1{
+  font-family:Fraunces,serif;font-weight:500;font-size:clamp(60px,8.2vw,126px);
+  line-height:.82;letter-spacing:-.055em;margin:22px 0 28px;
+}
+.hero h1 em{color:var(--orange);font-style:normal;position:relative}
+.hero h1 em:after{
+  content:"";position:absolute;height:10px;left:2%;right:2%;bottom:-4px;
+  background:var(--yellow);z-index:-1;transform:rotate(-2deg);
+}
+.heroIntro{
+  font-size:18px;line-height:1.45;max-width:38ch;margin:0 0 25px;color:var(--muted)
+}
+.heroCta{
+  display:inline-flex;align-items:center;gap:10px;border:0;background:var(--ink);color:var(--paper2);
+  padding:15px 22px;border-radius:50% 46% 52% 44%;font-weight:700;
+  transform:rotate(-1deg);box-shadow:5px 6px 0 var(--orange);
+}
+.heroCta:hover{transform:rotate(1deg) translateY(-2px)}
+.heroNote{
+  position:absolute;right:8%;bottom:13%;background:var(--paper2);
+  padding:13px 16px;font-family:Fraunces,serif;font-style:italic;font-size:16px;
+  transform:rotate(5deg);box-shadow:var(--shadow);border:1px solid var(--line);max-width:220px
+}
+.heroNote:before{content:"";position:absolute;width:45px;height:17px;background:var(--aqua);opacity:.72;top:-9px;left:35%;transform:rotate(-3deg)}
+
+.intro{
+  padding:20px 0 65px;position:relative
+}
+.introLine{
+  display:flex;align-items:center;gap:18px;font-family:Fraunces,serif;font-size:24px
+}
+.introLine:before{content:"";width:75px;height:3px;background:var(--orange);transform:rotate(-2deg)}
+.smallNote{color:var(--muted);font-size:14px;margin-left:93px;margin-top:5px}
+
+.categories{position:relative;padding-bottom:120px}
+.category{
+  min-height:780px;position:relative;padding:100px 0;
+  display:flex;align-items:center;
+}
+.category:nth-child(odd){background:var(--green2)}
+.category:nth-child(even){background:var(--paper2)}
+.category:before{
+  content:"";position:absolute;left:-5%;right:-5%;top:-22px;height:48px;
+  background:var(--paper);clip-path:polygon(0 35%,12% 20%,25% 34%,39% 14%,54% 29%,68% 10%,82% 27%,100% 13%,100% 70%,83% 58%,67% 73%,50% 55%,34% 72%,19% 53%,0 68%);
+}
+.categoryInner{
+  width:min(1280px,100%);margin:auto;padding:0 38px;position:relative;
+  display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+}
+.category.reverse .categoryInner{direction:rtl}
+.category.reverse .categoryInner>*{direction:ltr}
+.scene{
+  position:relative;min-height:480px;display:flex;align-items:center;justify-content:center
+}
+.scene img{
+  width:100%;max-height:590px;object-fit:cover;display:block;
+  clip-path:polygon(2% 1%,98% 0,100% 96%,95% 100%,1% 98%,0 5%);
+}
+.category:nth-child(1) .scene img{transform:rotate(-1.2deg)}
+.category:nth-child(2) .scene img{transform:rotate(1.4deg)}
+.category:nth-child(3) .scene img{transform:rotate(-.8deg)}
+.category:nth-child(4) .scene img{transform:rotate(1deg)}
+.sceneTape{
+  position:absolute;width:100px;height:28px;top:-9px;left:41%;
+  background:rgba(247,222,144,.78);transform:rotate(-4deg);z-index:2
+}
+.sceneWord{
+  position:absolute;bottom:-18px;left:8%;font-family:Fraunces,serif;
+  font-size:clamp(30px,4vw,54px);font-weight:500;line-height:.9;
+  background:var(--paper2);padding:8px 13px 11px;transform:rotate(-2deg);
+  box-shadow:6px 7px 0 rgba(36,25,20,.9)
+}
+.category:nth-child(2) .sceneWord{transform:rotate(2deg)}
+.category:nth-child(3) .sceneWord{transform:rotate(-1deg)}
+.category:nth-child(4) .sceneWord{transform:rotate(2deg)}
+
+.categoryCopy{position:relative}
+.categoryNumber{
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px
+}
+.categoryCopy h2{
+  font-family:Fraunces,serif;font-size:clamp(48px,6vw,86px);line-height:.85;
+  letter-spacing:-.045em;font-weight:500;margin:0 0 16px
+}
+.categoryCopy .tag{
+  font-family:Fraunces,serif;font-style:italic;font-size:21px;margin-bottom:17px
+}
+.categoryCopy .desc{max-width:42ch;color:var(--muted);line-height:1.5;margin-bottom:28px}
+.taskPaper{position:relative;
+  background:var(--paper2);padding:7px 10px 9px 13px;
+  border:1px solid rgba(36,25,20,.2);margin:8px 0;
+  display:flex;align-items:center;gap:11px;min-height:46px;
+  box-shadow:2px 3px 0 rgba(36,25,20,.08);
+  transform:rotate(var(--tilt,0deg));transition:.18s ease;
+}
+.taskPaper:hover{transform:rotate(0) translateX(4px);box-shadow:4px 5px 0 rgba(36,25,20,.12)}
+.taskPaper.menu-active{z-index:100}
+.taskPaper.done{opacity:.52}
+.taskPaper.done .taskText{text-decoration:line-through}
+.check{
+  width:23px;height:23px;border:1.7px solid var(--ink);background:transparent;
+  border-radius:50%;flex:0 0 auto;position:relative
+}
+.taskPaper.done .check{background:var(--ink)}
+.taskPaper.done .check:after{
+  content:"";position:absolute;width:8px;height:4px;border-left:2px solid var(--paper2);
+  border-bottom:2px solid var(--paper2);transform:rotate(-45deg);left:6px;top:7px
+}
+.taskText{flex:1;line-height:1.25;word-break:break-word}
+.more{
+  width:29px;height:29px;border:0;background:transparent;font-size:20px;line-height:1;
+  border-radius:50%;color:var(--muted)
+}
+.more:hover{background:var(--paper)}
+.addWithin{
+  display:inline-block;border:0;background:transparent;padding:9px 2px;margin-top:7px;
+  font-weight:700;color:var(--ink);text-decoration:underline;text-decoration-style:wavy;
+  text-decoration-color:var(--orange);text-underline-offset:4px
+}
+.completedToggle{
+  border:0;background:transparent;color:var(--muted);font-size:13px;padding:10px 0;
+  text-decoration:underline;cursor:pointer
+}
+.completedList{display:none}
+.completedList.open{display:block}
+.empty{font-family:Fraunces,serif;font-style:italic;color:var(--muted);padding:14px 0}
+
+.footer{
+  padding:90px 38px 110px;background:var(--ink);color:var(--paper);
+  position:relative;overflow:hidden
+}
+.footerInner{width:min(1280px,100%);margin:auto;position:relative;z-index:2}
+.footer h2{font-family:Fraunces,serif;font-size:clamp(50px,7vw,100px);line-height:.82;font-weight:400;max-width:8ch;margin:0 0 25px}
+.footer p{max-width:38ch;color:#c8bbb2;line-height:1.5}
+.footerScribble{
+  position:absolute;right:-5%;bottom:-35%;width:55vw;height:55vw;
+  border:2px solid rgba(247,242,217,.18);border-radius:48% 52% 44% 56%;transform:rotate(17deg)
+}
+
+.floatingAdd{
+  position:fixed;right:26px;bottom:25px;z-index:850;width:66px;height:66px;border-radius:50%;
+  border:2px solid var(--ink);background:var(--orange);color:var(--paper2);
+  font-size:34px;box-shadow:5px 6px 0 var(--ink);display:none
+}
+
+/* task menu */
+.taskMenu{
+  position:absolute;right:38px;top:38px;background:var(--paper2);border:1.5px solid var(--ink);
+  box-shadow:5px 6px 0 var(--ink);z-index:20;min-width:145px;display:none
+}
+.taskMenu.open{display:block}
+.taskMenu button{display:block;width:100%;border:0;background:transparent;text-align:left;padding:10px 13px}
+.taskMenu button:hover{background:var(--green2)}
+.editInput{flex:1;border:0;border-bottom:1.5px solid var(--ink);background:transparent;padding:4px 0;outline:none}
+
+/* modal */
+.overlay{
+  position:fixed;inset:0;background:rgba(36,25,20,.62);z-index:1100;
+  display:none;align-items:center;justify-content:center;padding:22px
+}
+.overlay.open{display:flex}
+.modal{
+  width:min(760px,100%);max-height:90svh;overflow:auto;background:var(--paper2);
+  position:relative;box-shadow:12px 14px 0 rgba(36,25,20,.8);
+  border:2px solid var(--ink);padding:38px 42px 42px;
+  transform:rotate(-.45deg)
+}
+.close{
+  position:absolute;right:15px;top:12px;border:0;background:transparent;
+  font-size:29px;color:var(--ink);line-height:1
+}
+.modalMini{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700}
+.modal h3{font-family:Fraunces,serif;font-size:clamp(37px,5vw,58px);line-height:.9;font-weight:500;letter-spacing:-.04em;margin:10px 0 25px}
+.modalTask{
+  display:inline-block;max-width:100%;padding:9px 14px;background:var(--yellow);
+  border:1.5px solid var(--ink);font-family:Fraunces,serif;font-size:18px;
+  transform:rotate(-1deg);margin-bottom:24px
+}
+.bigInput{
+  width:100%;border:0;border-bottom:2px solid var(--ink);outline:none;background:transparent;
+  padding:7px 0 13px;font-family:Fraunces,serif;font-size:30px;color:var(--ink)
+}
+.bigInput::placeholder{color:#9a8d81;font-style:italic}
+.questionArt{
+  position:absolute;right:25px;top:60px;width:125px;height:125px;object-fit:cover;
+  transform:rotate(4deg);border:1px solid var(--ink);display:none
+}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.option{
+  border:1.5px solid var(--ink);background:var(--paper);padding:18px 18px 16px;
+  text-align:left;min-height:104px;transition:.17s ease;position:relative
+}
+.option:hover{transform:rotate(-1deg) translateY(-2px);background:var(--yellow);box-shadow:4px 5px 0 var(--ink)}
+.option strong{display:block;font-family:Fraunces,serif;font-size:21px;font-weight:500}
+.option span{display:block;color:var(--muted);font-size:13px;margin-top:5px;line-height:1.35}
+.step{
+  display:flex;gap:7px;margin:0 0 18px
+}
+.step i{width:30px;height:5px;background:#d8cdb9;display:block;transform:rotate(-1deg)}
+.step i.on{background:var(--orange)}
+.result{
+  text-align:center;display:none
+}
+.result img{
+  width:220px;height:160px;object-fit:cover;border:1.5px solid var(--ink);
+  transform:rotate(-2deg);box-shadow:6px 7px 0 var(--ink);margin-bottom:22px
+}
+.result h4{font-family:Fraunces,serif;font-size:45px;font-weight:500;line-height:.9;margin:4px 0 12px}
+.result p{max-width:43ch;margin:0 auto 25px;color:var(--muted);line-height:1.45}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.primary{
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper2);
+  padding:12px 18px;font-weight:700
+}
+.secondary{
+  border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+  padding:12px 18px;font-weight:700
+}
+.changeGrid{display:none;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.changeGrid.open{display:grid}
+.changeGrid button{padding:10px;border:1px solid var(--ink);background:var(--paper)}
+.changeGrid button:hover{background:var(--yellow)}
+
+@media(max-width:900px){
+  .shell{padding:0 20px}
+  .top{padding:14px 15px}
+  .logo{font-size:20px}
+  .addTop{display:none}
+  .floatingAdd{display:block}
+  .hero{min-height:92svh;padding-top:100px;align-items:flex-start}
+  .heroCopy{width:100%;padding-top:28px}
+  .hero h1{font-size:clamp(62px,17vw,105px);max-width:5ch}
+  .heroIntro{font-size:16px;max-width:31ch}
+  .heroArt{right:-25vw;top:40%;width:125vw;opacity:.9}
+  .heroNote{display:none}
+  .intro{padding:0 0 35px}
+  .smallNote{margin-left:0}
+  .category{min-height:0;padding:75px 0 90px}
+  .categoryInner,.category.reverse .categoryInner{display:flex;flex-direction:column;gap:40px;padding:0 20px}
+  .scene{width:100%;min-height:0}
+  .scene img{max-height:none}
+  .categoryCopy{width:100%}
+  .categoryCopy h2{font-size:62px}
+  .sceneWord{font-size:39px}
+  .footer{padding:70px 20px 100px}
+  .modal{padding:30px 22px 30px;transform:none}
+  .questionArt{display:none!important}
+  .options{grid-template-columns:1fr}
+  .changeGrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#"><span>Impactful</span><i></i><span>Living.</span></a>
+  <button class="addTop" id="openAdd">+ add something</button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="shell">
+    <div class="heroCopy">
+      <div class="kicker">a little place for getting things done</div>
+      <h1>Not every task needs the <em>same</em> kind of day.</h1>
+      <p class="heroIntro">Put things down. We'll help you figure out what kind of task it is, then give it a place to live.</p>
+      <button class="heroCta" id="openAddHero">+ what's on your mind?</button>
+    </div>
+  </div>
+  <div class="heroArt"><img src="assets/main.png" alt="Cyclist climbing a green illustrated hillside"></div>
+  <div class="heroNote">four kinds of doing something. that's it. no productivity Olympics.</div>
+</section>
+
+<section class="intro">
+  <div class="shell">
+    <div class="introLine">your little landscape of things to do</div>
+    <div class="smallNote">Scroll through the four kinds. Tap a task when you want to move it, edit it, or call it done.</div>
+  </div>
+</section>
+
+<section class="categories" id="categories"></section>
+
+<footer class="footer">
+  <div class="footerInner">
+    <h2>One thing at a time.</h2>
+    <p>Impactful Living is less about doing everything and more about knowing what kind of thing you're looking at.</p>
+  </div>
+  <div class="footerScribble"></div>
+</footer>
+</main>
+
+<button class="floatingAdd" id="floatingAdd" aria-label="Add a task">+</button>
+
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+    <div id="wizard"></div>
+  </div>
+</div>
+
+<script>
+const IMAGES = {
+  main: "assets/main.png",
+  quickwins: "assets/quickwins.png",
+  thankless: "assets/thanklesstasks.png",
+  fillin: "assets/fillinjobs.png",
+  bigprojects: "assets/bigprojects.png"
+};
+
+const CATS = {
+  quickwins:{
+    name:"Quick wins", kicker:"little victories count",
+    tag:"Small, fast, and satisfying.",
+    desc:"Things you can knock out in one sitting and feel the little click of progress.",
+    image:IMAGES.quickwins, color:"#d39a19", bg:"#fff1bd"
+  },
+  thankless:{
+    name:"Thankless tasks", kicker:"the wheel keeps turning",
+    tag:"Nobody claps. Necessary all the same.",
+    desc:"The unglamorous things that keep life moving, even when you'd really rather be doing something else.",
+    image:IMAGES.thankless, color:"#713a20", bg:"#eadbd2"
+  },
+  fillin:{
+    name:"Fill-in jobs", kicker:"for the gaps in the day",
+    tag:"Got a little time? Do a little thing.",
+    desc:"Tasks that don't need your full attention and can happily live in the cracks between everything else.",
+    image:IMAGES.fillin, color:"#4f6b2c", bg:"#e4efc9"
+  },
+  bigprojects:{
+    name:"Big projects", kicker:"the long way up",
+    tag:"The climb. Worth making room for.",
+    desc:"Things that need time, intention, multiple steps, and a bit of faith that you'll get there.",
+    image:IMAGES.bigprojects, color:"#a84a1e", bg:"#f4dfcf"
+  }
+};
+
+const CAT_ORDER = ["quickwins","thankless","fillin","bigprojects"];
+const STORAGE_KEY = "impactfulLivingTasks";
+const DEMO_TASK_IDS = new Set(["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10","t11"]);
+let storedTasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+// Start new users with a blank workspace. If this browser has the old demo tasks, remove those
+// while keeping any tasks the user may already have created.
+let tasks = Array.isArray(storedTasks) ? storedTasks.filter(t => !DEMO_TASK_IDS.has(t.id)) : [];
+if (Array.isArray(storedTasks) && tasks.length !== storedTasks.length) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+}
+let menuOpen = null;
+let editing = null;
+let completedOpen = {};
+let wizard = {step:"text", text:"", answers:{}, category:null, classified:true};
+
+function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); }
+function esc(s){ const d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+function uid(){ return "t"+Math.random().toString(36).slice(2,9); }
+function active(cat){ return tasks.filter(t=>t.category===cat && !t.done); }
+function completed(cat){ return tasks.filter(t=>t.category===cat && t.done); }
+
+function classify(a){
+  if(a.timing==="minutes"){
+    return a.feel==="satisfying" ? "quickwins" : "fillin";
+  }
+  return a.feel==="want" ? "bigprojects" : "thankless";
+}
+
+function reason(cat){
+  return {
+    quickwins:"A small thing, a quick finish, and a little hit of progress. That's a Quick Win.",
+    fillin:"Perfect for the gaps in your day. Nothing dramatic, just something useful to pick up and put down.",
+    thankless:"It needs doing, but it isn't exactly calling your name. That's what makes it a Thankless Task.",
+    bigprojects:"This one needs real time and intention. Break it into pieces and take the long way up."
+  }[cat];
+}
+
+function render(){
+  const root=document.getElementById("categories");
+  root.innerHTML=CAT_ORDER.map((id,i)=>{
+    const c=CATS[id], a=active(id), done=completed(id);
+    const rows=a.length ? a.map((t,j)=>taskHTML(t,j)).join("") :
+      `<div class="empty">Nothing here yet. That's either peaceful or suspicious.</div>`;
+    const completedRows=done.map(t=>taskHTML(t,0,true)).join("");
+    return `
+      <section class="category ${i%2 ? "reverse":""}" id="cat-${id}" style="--accent:${c.color}">
+        <div class="categoryInner">
+          <div class="scene">
+            <div class="sceneTape"></div>
+            <img src="${c.image}" alt="">
+            <div class="sceneWord">${c.name}</div>
+          </div>
+          <div class="categoryCopy">
+            <div class="categoryNumber">${String(i+1).padStart(2,"0")} · ${c.kicker}</div>
+            <h2>${c.name}</h2>
+            <div class="tag">${c.tag}</div>
+            <div class="desc">${c.desc}</div>
+            <div>${rows}</div>
+            ${done.length ? `<button class="completedToggle" onclick="toggleCompleted('${id}')">${completedOpen[id] ? "hide" : "show"} ${done.length} completed</button>
+              <div class="completedList ${completedOpen[id] ? "open":""}">${completedRows}</div>`:""}
+            <button class="addWithin" onclick="openWizard('${id}')">+ put something here</button>
+          </div>
+        </div>
+      </section>`;
+  }).join("");
+}
+
+function taskHTML(t,index,isDone=false){
+  const tilt=[-0.5,0.4,-0.3,0.7][index%4];
+  if(editing===t.id){
+    return `<div class="taskPaper" style="--tilt:0deg">
+      <button class="check" onclick="toggleTask('${t.id}')"></button>
+      <input class="editInput" id="edit-${t.id}" value="${esc(t.text)}" onkeydown="editKey(event,'${t.id}')">
+      <button class="more" onclick="finishEdit('${t.id}')">✓</button>
+    </div>`;
+  }
+  return `<div class="taskPaper ${t.done?"done":""} ${menuOpen===t.id?"menu-active":""}" style="--tilt:${tilt}deg">
+    <button class="check" onclick="toggleTask('${t.id}')" aria-label="${t.done?"Undo":"Complete"} task"></button>
+    <div class="taskText">${esc(t.text)}</div>
+    <button class="more" onclick="toggleMenu('${t.id}')" aria-label="More">···</button>
+    <div class="taskMenu ${menuOpen===t.id?"open":""}">
+      <button onclick="startEdit('${t.id}')">Edit</button>
+      <button onclick="moveTask('${t.id}')">Move to another kind</button>
+      <button onclick="deleteTask('${t.id}')">Delete</button>
+    </div>
+  </div>`;
+}
+
+function toggleTask(id){
+  const t=tasks.find(x=>x.id===id); if(!t)return;
+  t.done=!t.done; menuOpen=null; save(); render();
+}
+function toggleMenu(id){ menuOpen=menuOpen===id?null:id; render(); }
+function toggleCompleted(cat){ completedOpen[cat]=!completedOpen[cat]; render(); }
+function startEdit(id){ editing=id; menuOpen=null; render(); setTimeout(()=>{const e=document.getElementById("edit-"+id);if(e){e.focus();e.select()}},30); }
+function finishEdit(id){
+  const t=tasks.find(x=>x.id===id), e=document.getElementById("edit-"+id);
+  if(t && e && e.value.trim()) t.text=e.value.trim();
+  editing=null; save(); render();
+}
+function editKey(e,id){ if(e.key==="Enter" || e.key==="Escape"){ if(e.key==="Enter") finishEdit(id); else {editing=null;render();}}}
+function deleteTask(id){ tasks=tasks.filter(x=>x.id!==id); menuOpen=null; save(); render(); }
+function moveTask(id){
+  const t=tasks.find(x=>x.id===id); if(!t)return;
+  const options=CAT_ORDER.filter(x=>x!==t.category).map(x=>`${CATS[x].name}`).join("\n");
+  const choice=prompt("Move this task to:\n\n"+options);
+  if(!choice)return;
+  const found=CAT_ORDER.find(x=>CATS[x].name.toLowerCase()===choice.trim().toLowerCase());
+  if(found)t.category=found;
+  menuOpen=null; save(); render();
+}
+
+/* ---------- wizard ---------- */
+function openWizard(preset=null){
+  wizard={step:"text",text:"",answers:{},category:preset,classified:!!preset};
+  document.getElementById("overlay").classList.add("open");
+  renderWizard();
+}
+function closeWizard(){ document.getElementById("overlay").classList.remove("open"); }
+function renderWizard(){
+  const w=document.getElementById("wizard");
+  if(wizard.step==="text"){
+    w.innerHTML=`
+      <div class="modalMini">something to put somewhere</div>
+      <h3>What's on your mind?</h3>
+      <input class="bigInput" id="newTask" autofocus placeholder="e.g. look out for internships" value="${esc(wizard.text)}">
+      <div class="actions" style="justify-content:flex-end;margin-top:28px">
+        <button class="primary" id="continue">Let's figure it out →</button>
+      </div>`;
+    const input=document.getElementById("newTask");
+    const btn=document.getElementById("continue");
+    btn.disabled=!input.value.trim(); btn.style.opacity=btn.disabled?".45":"1";
+    input.addEventListener("input",()=>{btn.disabled=!input.value.trim();btn.style.opacity=btn.disabled?".45":"1"});
+    input.addEventListener("keydown",e=>{if(e.key==="Enter"&&input.value.trim()) nextText()});
+    btn.addEventListener("click",nextText);
+    function nextText(){wizard.text=input.value.trim(); wizard.step=wizard.classified?"result":"q1"; renderWizard();}
+    return;
+  }
+  if(wizard.step==="q1"){
+    w.innerHTML=`
+      <div class="step"><i class="on"></i><i></i></div>
+      <div class="modalMini">first question</div>
+      <div class="modalTask">“${esc(wizard.text)}”</div>
+      <h3>Could you squeeze this into a few minutes, or does it need a proper block of time?</h3>
+      <div class="options">
+        <button class="option" onclick="answerQ1('minutes')"><strong>A few minutes</strong><span>I can squeeze it in without much setup.</span></button>
+        <button class="option" onclick="answerQ1('block')"><strong>A proper block</strong><span>I need to sit down and give it my attention.</span></button>
+      </div>`;
+    return;
+  }
+  if(wizard.step==="q2"){
+    const minutes=wizard.answers.timing==="minutes";
+    w.innerHTML=`
+      <div class="step"><i class="on"></i><i class="on"></i></div>
+      <div class="modalMini">second question</div>
+      <div class="modalTask">“${esc(wizard.text)}”</div>
+      <h3>${minutes ? "When it's done, will it feel like a little win, or just something to tick off?" : "Be honest. Do you actually want to spend time on this, or is it mostly something you have to get through?"}</h3>
+      <div class="options">
+        ${minutes
+          ? `<button class="option" onclick="answerQ2('satisfying')"><strong>A little win</strong><span>I'll be glad it's off my plate.</span></button>
+             <button class="option" onclick="answerQ2('neutral')"><strong>Just tick it off</strong><span>Useful, but nothing to celebrate.</span></button>`
+          : `<button class="option" onclick="answerQ2('want')"><strong>I actually want to</strong><span>It's worth making time for.</span></button>
+             <button class="option" onclick="answerQ2('obligation')"><strong>I just have to</strong><span>Necessary, not exactly exciting.</span></button>`}
+      </div>
+      <button class="secondary" style="margin-top:22px" onclick="wizard.step='q1';renderWizard()">← back</button>`;
+    return;
+  }
+  if(wizard.step==="result"){
+    const c=CATS[wizard.category];
+    w.innerHTML=`
+      <div class="result">
+        <img src="${c.image}" alt="">
+        <div class="modalMini">we found its place</div>
+        <div class="modalTask">“${esc(wizard.text)}”</div>
+        <h4>This feels like a<br><span style="color:${c.color}">${c.name}.</span></h4>
+        <p>${reason(wizard.category)}</p>
+        <div class="actions">
+          <button class="primary" onclick="commitTask()">Put it there</button>
+          <button class="secondary" onclick="showChange()">Actually, somewhere else</button>
+        </div>
+        <div class="changeGrid" id="changeGrid">
+          ${CAT_ORDER.map(id=>`<button onclick="changeCategory('${id}')">${CATS[id].name}</button>`).join("")}
+        </div>
+      </div>`;
+    w.querySelector(".result").style.display="block";
+  }
+  if(wizard.step==="success"){
+    const c=CATS[wizard.category];
+    w.innerHTML=`
+      <div class="result" style="display:block">
+        <img src="${c.image}" alt="">
+        <div class="modalMini">done. well, almost.</div>
+        <h4>It's living in<br><span style="color:${c.color}">${c.name}.</span></h4>
+        <p>“${esc(wizard.text)}” has found a home.</p>
+        <div class="actions"><button class="primary" onclick="closeWizard()">Nice.</button></div>
+      </div>`;
+  }
+}
+function answerQ1(v){wizard.answers.timing=v;wizard.step="q2";renderWizard()}
+function answerQ2(v){wizard.answers.feel=v;wizard.category=classify(wizard.answers);wizard.classified=true;wizard.step="result";renderWizard()}
+function showChange(){document.getElementById("changeGrid").classList.toggle("open")}
+function changeCategory(id){wizard.category=id;wizard.classified=false;renderWizard()}
+function commitTask(){
+  tasks.unshift({id:uid(),text:wizard.text,category:wizard.category,done:false});
+  save(); render(); wizard.step="success"; renderWizard();
+}
+
+document.getElementById("openAdd").onclick=()=>openWizard();
+document.getElementById("openAddHero").onclick=()=>openWizard();
+document.getElementById("floatingAdd").onclick=()=>openWizard();
+document.getElementById("closeModal").onclick=closeWizard;
+document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closeWizard()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeWizard()});
+document.addEventListener("click",e=>{
+  if(!e.target.closest(".taskPaper")) { menuOpen=null; if(document.querySelector(".taskMenu.open")) render(); }
+});
+
+render();
+</script>
+</body>
+</html>
